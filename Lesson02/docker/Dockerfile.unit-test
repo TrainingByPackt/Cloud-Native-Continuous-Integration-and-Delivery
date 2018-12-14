@@ -1,0 +1,6 @@
+FROM golang:1.10
+
+ADD . /go/src/gitlab.com/onuryilmaz/book-server
+WORKDIR /go/src/gitlab.com/onuryilmaz/book-server
+
+RUN go test ./... -v -tags=unit
