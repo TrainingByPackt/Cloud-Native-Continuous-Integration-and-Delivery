@@ -1,0 +1,7 @@
+FROM golang:1.10
+
+ADD . /go/src/gitlab.com/onuryilmaz/book-server-cd
+WORKDIR /go/src/gitlab.com/onuryilmaz/book-server-cd
+
+ENV DATABASE ""
+CMD go test ./... -v -tags=integration -db=$DATABASE
