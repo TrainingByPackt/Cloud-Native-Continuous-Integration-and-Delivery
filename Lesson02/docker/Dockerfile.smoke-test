@@ -1,0 +1,7 @@
+FROM golang:1.10
+
+ADD . /go/src/gitlab.com/onuryilmaz/book-server
+WORKDIR /go/src/gitlab.com/onuryilmaz/book-server
+
+ENV DATABASE ""
+CMD go test ./... -v -tags=smoke -db=$DATABASE
