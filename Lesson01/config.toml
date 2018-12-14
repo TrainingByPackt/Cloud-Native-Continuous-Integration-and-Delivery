@@ -1,0 +1,18 @@
+contentdir    = "content"
+layoutdir     = "layouts"
+publishdir    = "public"
+title = "Cloud-Native CI/CD"
+canonifyurls  = true
+
+DefaultContentLanguage = "en"
+metaDataFormat = "yaml"
+pygmentsUseClasses = true
+pygmentCodeFences = true
+
+[Params]
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+
+[Author]
+  name = "Onur Yilmaz"
