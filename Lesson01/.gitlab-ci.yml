@@ -1,0 +1,21 @@
+image: registry.gitlab.com/pages/hugo:latest
+
+stages:
+  - validate
+  - pages
+  
+validate:
+  stage: validate
+  script:
+  - hugo
+
+pages:
+  stage: pages
+  script:
+  - mkdir -p themes/beautifulhugo && git clone https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+  - hugo --theme beautifulhugo
+  only: 
+  - master
+  artifacts:
+    paths:
+    - public
