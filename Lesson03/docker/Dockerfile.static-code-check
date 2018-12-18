@@ -1,0 +1,6 @@
+FROM  golangci/golangci-lint
+
+ADD . /go/src/gitlab.com/onuryilmaz/book-server-cd
+WORKDIR /go/src/gitlab.com/onuryilmaz/book-server-cd
+
+RUN golangci-lint run ./...
