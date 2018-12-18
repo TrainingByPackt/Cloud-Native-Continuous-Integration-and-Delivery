@@ -1,0 +1,7 @@
+replicaCount: 10
+
+image:
+  repository: registry.gitlab.com/onuryilmaz/book-server-cd
+  tag: latest
+
+database: ""

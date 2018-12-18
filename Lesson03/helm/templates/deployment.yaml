@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: book-server
+  labels:
+    app: book-server
+spec:
+  replicas:  {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: book-server
+  template:
+    metadata:
+      labels:
+        app: book-server
+    spec:
+      containers:
+        - name: book-server
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+          - name: DATABASE
+            value: {{ .Values.database }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: http
