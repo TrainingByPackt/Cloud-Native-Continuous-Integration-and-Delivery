@@ -1,0 +1,71 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+- static-code-check
+- unit-test
+- smoke-test
+- build-integration-test
+- run-integration-test
+- build
+
+static-code-check:
+  stage: static-code-check
+  script:
+    - docker build --rm -f docker/Dockerfile.static-code-check .
+
+smoke-test:
+  services:
+  - docker:dind
+  stage: smoke-test
+  script:
+  - docker build -f docker/Dockerfile.smoke-test -t $CI_REGISTRY_IMAGE/smoke-test:$CI_COMMIT_SHA .
+  - docker run -d -p 5432:5432 --name postgres postgres
+  - docker run --rm --link postgres:postgres gesellix/wait-for postgres:5432
+  - docker run -e DATABASE="postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable" --link postgres $CI_REGISTRY_IMAGE/smoke-test:$CI_COMMIT_SHA
+
+unit-test:
+  stage: unit-test
+  script:
+    - docker build --rm -f docker/Dockerfile.unit-test .
+
+build-integration-test:
+  stage: build-integration-test
+  script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  - docker build -f docker/Dockerfile.integration-test -t $CI_REGISTRY_IMAGE/integration-test:$CI_COMMIT_SHA .
+  - docker push $CI_REGISTRY_IMAGE/integration-test:$CI_COMMIT_SHA
+
+run-integration-test-postgresql:
+  services:
+  - docker:dind
+  stage: run-integration-test
+  script:
+  - docker run -d -p 5432:5432 --name postgres postgres
+  - docker run --rm --link postgres:postgres gesellix/wait-for postgres:5432
+  - docker run -e DATABASE="postgresql://postgres:postgres@postgres:5432/postgres?sslmode=disable" --link postgres $CI_REGISTRY_IMAGE/integration-test:$CI_COMMIT_SHA
+
+run-integration-test-mysql:
+  services:
+  - docker:dind
+  stage: run-integration-test
+  script:
+  - docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=default --name mysql mysql
+  - docker run --rm --link mysql:mysql gesellix/wait-for mysql:3306 -t 30
+  - docker run -e DATABASE="mysql://root:password@mysql:3306/default" --link mysql $CI_REGISTRY_IMAGE/integration-test:$CI_COMMIT_SHA
+
+run-integration-test-mssql:
+  services:
+  - docker:dind
+  stage: run-integration-test
+  script:
+  - docker run -d -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Password!" -p 1433:1433 --name mssql mcr.microsoft.com/mssql/server:2017-latest
+  - docker run --rm --link mssql:mssql gesellix/wait-for mssql:1433
+  - docker run -e DATABASE="mssql://sa:Password!@mssql:1433" --link mssql $CI_REGISTRY_IMAGE/integration-test:$CI_COMMIT_SHA
+
+build:
+  stage: build
+  script:
+  - docker build --target production -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
