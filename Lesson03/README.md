@@ -29,7 +29,7 @@ You’ll also need the following software installed in advance:
 * Docker (Version 17.05 or higher)
 * Git
 * GNU make
-* ## Dependency Management
+### Dependency Management
 * [govendor](https://github.com/kardianos/govendor) is used for dependency management.
 * Fixed versions can be checked from [vendor.json](vendor/vendor.json)
 
