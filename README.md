@@ -1,4 +1,4 @@
-[![GitHub issues](https://img.shields.io/github/issues/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Spring-Boot-2-Fundamentals/issues)
+[![GitHub issues](https://img.shields.io/github/issues/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery/issues)
 [![GitHub forks](https://img.shields.io/github/forks/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery/network)
 [![GitHub stars](https://img.shields.io/github/stars/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery/pulls)
