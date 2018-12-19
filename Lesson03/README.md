@@ -6,7 +6,7 @@
 # Cloud-Native-Continuous-Integration-and-Delivery
 The course starts with a detailed explanation of CI/CD concepts by experimenting with cloud services and on-premise applications. You'll learn to create multi-stage builds and tests for Docker and apply best practices for Docker containers. You'll learn how to continuously deliver to Docker registry. As the course progresses, you'll experiment cloud services for continuous integration including build and test of cloud-native microservices. When the course ends, you would have experimented using Gitlab CI/CD Pipelines for continuous delivery, and configured and deployed software to Kubernetes using Helm.
 
-Cloud-Native-Continuous-Integration-and-Delivery by **Onur Yilmaz**
+## Cloud-Native-Continuous-Integration-and-Delivery by **Onur Yilmaz**
 
 ## What you will learn
 *	Learn the basics of DevOps patterns for cloud-native architecture 
