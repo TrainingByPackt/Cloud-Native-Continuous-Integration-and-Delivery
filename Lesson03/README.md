@@ -1,13 +1,3 @@
-
-
-## Requirements
-* Docker (> version 17.05)
-* GNU make
-	
-## Dependency Management
-* [govendor](https://github.com/kardianos/govendor) is used for dependency management.
-* Fixed versions can be checked from [vendor.json](vendor/vendor.json)
-
 [![GitHub issues](https://img.shields.io/github/issues/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Spring-Boot-2-Fundamentals/issues)
 [![GitHub forks](https://img.shields.io/github/forks/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery/network)
 [![GitHub stars](https://img.shields.io/github/stars/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery.svg)](https://github.com/TrainingByPackt/Cloud-Native-Continuous-Integration-and-Delivery/stargazers)
@@ -38,5 +28,9 @@ You’ll also need the following software installed in advance:
 * **Text Editor**: Sublime Text (latest version), Atom IDE (latest version), or another similar text editor application
 * Docker (Version 17.05 or higher)
 * Git
+* GNU make
+* ## Dependency Management
+* [govendor](https://github.com/kardianos/govendor) is used for dependency management.
+* Fixed versions can be checked from [vendor.json](vendor/vendor.json)
 
 
